@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 // Definir rutas para login y registro
 Route::post('/login', [AuthController::class, 'login']);
 
-route::middleware('auth:sanctum')->group(function () {
+Route::middleware('auth:sanctum')->group(function () {
     // cerrar sesión
     Route::post('/logout', [AuthController::class, 'logout']);
 
@@ -25,11 +25,12 @@ route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('/ventas',VentaController::class);
     Route::apiResource('/compras',CompraController::class);
     Route::apiResource('/productoventa',ProductoVentaController::class);
-
+    Route::apiResource('/notes',NoteController::class);
 
 
 });
- Route::apiResource('/notes',NoteController::class);
+
+
 
 
 
