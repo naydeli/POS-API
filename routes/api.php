@@ -25,10 +25,11 @@ route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('/ventas',VentaController::class);
     Route::apiResource('/compras',CompraController::class);
     Route::apiResource('/productoventa',ProductoVentaController::class);
-    Routes::apiResource('/notes',NoteController::class);
+
 
 
 });
+ Route::apiResource('/notes',NoteController::class);
 
 
 

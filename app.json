@@ -1,0 +1,12 @@
+{
+  "expo": {
+    "extra": {
+      "eas": {
+        "projectId": "5e8b21a9-a85a-455c-92ba-0485a52cedaf"
+      }
+    },
+    "android": {
+      "package": "com.naydeli.postapi"
+    }
+  }
+}

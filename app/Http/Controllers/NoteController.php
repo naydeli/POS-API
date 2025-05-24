@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Note;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class NoteController extends Controller
 {
     public function index()
     {
-        return Note::all();
+        return Note::with('user')->get(); // Incluye relación si es útil
     }
 
     public function store(Request $request)
@@ -19,7 +20,13 @@ class NoteController extends Controller
             'content' => 'nullable|string',
         ]);
 
-        return Note::create($request->all());
+        $note = Note::create([
+            'title' => $request->title,
+            'content' => $request->content,
+            'user_id' => Auth::id(), // Solo si estás usando auth
+        ]);
+
+        return $note;
     }
 
     public function show(Note $note)
@@ -34,7 +41,7 @@ class NoteController extends Controller
             'content' => 'sometimes|nullable|string',
         ]);
 
-        $note->update($request->all());
+        $note->update($request->only(['title', 'content']));
         return $note;
     }
 
